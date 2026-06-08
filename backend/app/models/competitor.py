@@ -16,5 +16,5 @@ class Competitor(Base):
 
    )
 
-   reports= relationship("Reports", back_populates="competitor", cascADE="all, delete-orphan")
+   reports= relationship("Reports", back_populates="competitor", cascade="all, delete-orphan")
    metrics = relationship("Metrics", back_populates="competitor", cascade="all, delete-orphan")
