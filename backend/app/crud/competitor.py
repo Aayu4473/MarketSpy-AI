@@ -7,6 +7,7 @@ from sqlalchemy.future import select
 from app.models.competitor import Competitor
 from app.schemas.competitor import CompetitorCreate 
 
+# 🚀 1. CREATE: Unpacks ALL fields from the schema and saves them to the vault
 async def create_competitor(db: AsyncSession, competitor_in: CompetitorCreate) -> Competitor:
                                              # VIP PASS having valid data from schemas bouncer
 #The Manager then physically unpacks the data from the VIP pass (competitor_in) and 
@@ -15,11 +16,8 @@ async def create_competitor(db: AsyncSession, competitor_in: CompetitorCreate) -
 #Take the name from the VIP pass ➔ Put it in the box's name slot.
 #Take the website from the VIP pass ➔ Put it in the box's website slot.
 
-    db_obj= Competitor(
-        name=competitor_in.name,
-        website=competitor_in.website,
-        industry= competitor_in.industry
-    )
+    # .model_dump() turns the schema into a dictionary, and ** unpacks all columns automatically
+    db_obj = Competitor(**competitor_in.model_dump())
     db.add(db_obj)
     await db.commit()
     await db.refresh(db_obj)

@@ -18,8 +18,8 @@ class Metrics(Base):
     # Core data points
     metric_type: Mapped[str] = mapped_column(String(50), nullable=False, index=True)  # e.g., "pricing", "alexa_rank"
     value: Mapped[float] = mapped_column(Float, nullable=False)                       # Numerical float value
-
-    # Timestamps
+    source_url: Mapped[str | None]= mapped_column(String(500), nullable=True)#Timestamps
+    
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), 
         default=lambda: datetime.now(timezone.utc)

@@ -8,6 +8,9 @@ class Competitor(Base):
 
    id: Mapped[int]= mapped_column(primary_key=True, index=True)
    name: Mapped[str]= mapped_column(String(500), nullable=False, unique=True)
+   website: Mapped[str | None]= mapped_column(String(500), nullable=True )
+   industry: Mapped[str | None]= mapped_column(String(500), nullable=True)
+   
 
    created_at: Mapped[datetime]= mapped_column(
       DateTime(timezone=True),
@@ -16,5 +19,5 @@ class Competitor(Base):
 
    )
 
-   reports= relationship("Reports", back_populates="competitor", cascade="all, delete-orphan")
+   reports= relationship("Report", back_populates="competitor", cascade="all, delete-orphan")
    metrics = relationship("Metrics", back_populates="competitor", cascade="all, delete-orphan")
