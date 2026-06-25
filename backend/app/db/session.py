@@ -1,19 +1,12 @@
 import os
 from typing import AsyncGenerator
-from dotenv import load_dotenv
+# 1. Import your new central configuration object instead of load_dotenv
+from app.config import settings
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 
-# 1. Load system secrets from our decoupled backend/.env file
-load_dotenv()
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-if not DATABASE_URL:
-    raise ValueError("CRITICAL SYSTEM ERROR: DATABASE_URL environment variable is not configured.")
-
-# 2. Instantiate our high-performance Asynchronous DB Engine
-# echo=True prints raw SQL logs to your terminal so you can audit database transactions visually
-engine = create_async_engine(DATABASE_URL, echo=True, future=True)
+# 2. Instantiate our high-performance Asynchronous DB Engine 
+# We now grab the validated URL straight from settings.DATABASE_URL
+engine = create_async_engine(settings.DATABASE_URL, echo=True, future=True)
 
 # 3. Form our decoupled Session Factory
 AsyncSessionLocal = async_sessionmaker(

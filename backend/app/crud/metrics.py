@@ -1,8 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.metrics import Metrics
-from app.schemas.metrics import MetricsCreate
+from app.schemas.metrics import MetricCreate
 
-async def create_metric(db: AsyncSession, metric_in: MetricsCreate) -> Metrics:
+async def create_metric(db: AsyncSession, metric_in: MetricCreate) -> Metrics:
     """
     Inserts a historical data metrics point linked to a specific competitor.
     """
