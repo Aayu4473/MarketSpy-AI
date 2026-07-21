@@ -13,6 +13,10 @@ class MetricCreate(MetricsBase):
 
 class MetricResponse(MetricsBase):
     id: int
+    competitor_id:int
+    metric_type:str
+    value: float
+    source_url: Optional[str]=None
     created_at: datetime
 
     class Config:

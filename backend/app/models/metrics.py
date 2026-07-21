@@ -16,7 +16,7 @@ class Metrics(Base):
     competitor_id: Mapped[int] = mapped_column(ForeignKey("competitors.id", ondelete="CASCADE"), nullable=False)
 
     # Core data points
-    metric_type: Mapped[str] = mapped_column(String(50), nullable=False, index=True)  # e.g., "pricing", "alexa_rank"
+    metric_type: Mapped[str] = mapped_column(String(255), nullable=False, index=True)  # e.g., "pricing", "alexa_rank"
     value: Mapped[float] = mapped_column(Float, nullable=False)                       # Numerical float value
     source_url: Mapped[str | None]= mapped_column(String(500), nullable=True)#Timestamps
     
