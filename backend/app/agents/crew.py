@@ -1,10 +1,7 @@
 import os
 from crewai import Agent, Task, Crew, Process
 from langchain_google_genai import ChatGoogleGenerativeAI
-
 from app.agents.tools import fetch_competitor_metrics_tool
-
-
 
 financial_analyst=Agent(
     role="Senior Financial Analyst",
@@ -49,11 +46,22 @@ def run_competitive_analysis_crew(competitor_id: int)-> str:
     )
 
     # Assemble the crew
-    market_spy_crew= Crew(
-        agents=[financial_analyst,market_strategist],
+    # Assemble the crew
+    analysis_crew = Crew(
+        agents=[financial_analyst, market_strategist],
         tasks=[data_extraction_task, executive_reporting_task],
-        process=Process.sequential, #analyze run first,then passes finding to strategist
+        process=Process.sequential,
         verbose=True
     )
-    # Fire up the execution loop
-    return market_spy_crew.kickoff()
+
+    # 1. Give CrewAI access to your Gemini Key
+    import os
+    from app.config import settings
+    os.environ["GEMINI_API_KEY"] = settings.GEMINI_API_KEY
+
+    # 2. Kickoff the agents
+    print("\n[CREWAI] Agents are now working...")
+    result = analysis_crew.kickoff()
+    
+    # 3. CRITICAL: Convert the object to a raw string and return it!
+    return str(result)

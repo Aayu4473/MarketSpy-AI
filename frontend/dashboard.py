@@ -152,7 +152,7 @@ if selected_name == "-- Select Monitored Company --" or not options_list:
     with stat_col3:
         st.metric("Analysis Engine API", "Operational", delta="Ready")
         
-    st.info("💡 Pro-Tip: Pick an existing profile from the sidebar dropdown on the left or add a new brand to stream a real-time deep dive report.")
+    st.info("💡Pick an existing profile from the sidebar dropdown on the left or add a new brand to stream a real-time deep dive report.")
 
 else:
     # Deep dive view for the chosen competitor

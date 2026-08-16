@@ -12,6 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import settings
 from app.models.report import Report
 from app.models.metrics import Metrics
+from app.agents.crew import run_competitive_analysis_crew
 
 # Initialize the Gemini Client using our central configuration settings
 client = genai.Client(api_key=settings.GEMINI_API_KEY)
@@ -154,15 +155,7 @@ async def generate_market_report(competitor_id: int, target_url: str, db: AsyncS
                 ]
             )
 
-        # 6. Save the generated Markdown report directly into the database
-        db_report = Report(
-            competitor_id=competitor_id,
-            target_url=target_url,
-            ai_markdown_analysis=ai_data.markdown_analysis
-        )
-        db.add(db_report)
-
-        # 7. Iterate and save each individual metric pulled out by Gemini
+        # 6. Save the metrics to the database FIRST (Phase 1)
         for item in ai_data.metrics:
             db_metric = Metrics(
                 competitor_id=competitor_id,
@@ -172,10 +165,25 @@ async def generate_market_report(competitor_id: int, target_url: str, db: AsyncS
             )
             db.add(db_metric)
 
-        # 8. Commit both operations atomically to the database
+        # IMPORTANT: Commit metrics so the CrewAI tools can read them!
         await db.commit()
-        print(f"[SUCCESS] Processed and stored AI intelligence data for Competitor ID: {competitor_id}\n")
+        print(f"\n[PHASE 1 COMPLETE] Metrics saved to database for Competitor ID: {competitor_id}")
 
+        # 7. Wake up the CrewAI multi-agent team (Phase 2)
+        print("\n[PHASE 2 INITIATED] Waking up the CrewAI Orchestrator...")
+        crew_final_report = await asyncio.to_thread(run_competitive_analysis_crew, competitor_id)
+
+        # 8. Save the TRUE Multi-Agent Markdown report into the database
+        db_report = Report(
+            competitor_id=competitor_id,
+            target_url=target_url,
+            ai_markdown_analysis=crew_final_report
+        )
+        db.add(db_report)
+        await db.commit()
+
+        print(f"[SUCCESS] Multi-Agent analysis completed and stored for Competitor ID: {competitor_id}\n")
+    
     except Exception as e:
         await db.rollback()
         print(f"CRITICAL ERROR in AI Engine Loop: {str(e)}")
