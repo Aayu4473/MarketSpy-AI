@@ -5,7 +5,11 @@
 > **Transforming raw competitor websites into structured financial intelligence, competitive analysis, and C-suite-ready strategic briefings — autonomously.**
 
 <p align="center">
-  <img src="assets/screenshots/dashboard.png" alt="MarketSpy AI Dashboard" width="900"/>
+  <img 
+    src="assets/dashboard.png" 
+    alt="MarketSpy AI Dashboard"
+    width="950"
+  >
 </p>
 
 <p align="center">
@@ -243,30 +247,6 @@ This provides:
 
 The result is a much more reliable pipeline for quantitative analysis.
 
----
-
-## 📸 Screenshot Checkpoint #1 — Async Reconnaissance
-
-> **Recommended screenshot:** VS Code terminal showing the asynchronous crawling and Gemini extraction process.
-
-Example:
-
-```text
-[INFO] Starting competitor reconnaissance...
-[INFO] Fetching competitor homepage...
-[INFO] Fetching pricing page...
-[INFO] Fetching about page...
-[INFO] Gemini extraction started...
-[INFO] Structured JSON generated
-[INFO] Pydantic validation successful
-[INFO] Data persisted successfully
-```
-
-Add your screenshot here:
-
-<p align="center">
-  <img src="assets/screenshots/async-reconnaissance.png" alt="Async Web Reconnaissance" width="850"/>
-</p>
 
 ---
 
@@ -343,30 +323,27 @@ The final output follows a **BLUF — Bottom Line Up Front** approach.
 
 ## 📸 Screenshot Checkpoint #2 — CrewAI Execution
 
-> **Recommended screenshot:** Terminal showing the CrewAI agents executing sequentially.
+> Terminal showing the CrewAI agents executing sequentially.
 
-Capture something similar to:
+## 🤖 Multi-Agent Execution
 
-```text
-Crew started
-      ↓
-Senior Financial Analyst
-      ↓
-Database Tool
-      ↓
-Financial Analysis
-      ↓
-Lead Market Strategist
-      ↓
-Strategic Synthesis
-      ↓
-Executive Briefing Generated
-```
-
-Add your screenshot here:
+The CrewAI pipeline coordinates specialized financial and strategic agents.
 
 <p align="center">
-  <img src="assets/screenshots/crewai-agents.png" alt="CrewAI Multi-Agent Execution" width="850"/>
+  <img 
+    src="assets/crew1.png" 
+    alt="CrewAI Multi-Agent Execution"
+    width="900"
+  >
+</p>
+
+
+<p align="center">
+  <img 
+    src="assets/crewai-agents.png" 
+    alt="CrewAI Multi-Agent Execution"
+    width="900"
+  >
 </p>
 
 ---
@@ -458,28 +435,9 @@ The dashboard combines:
 
 ## 📸 Screenshot Checkpoint #3 — Final Executive Dashboard
 
-> **Recommended screenshot:** Your best-looking final dashboard showing the generated report and charts together.
-
-Ideally capture:
-
-```text
-┌────────────────────────────┬─────────────────────┐
-│                            │                     │
-│ Executive Briefing         │ Pricing Comparison │
-│                            │                     │
-│ BLUF                       │ █████████           │
-│ Strategic Risks            │ ███████             │
-│ Recommendations            │ █████               │
-│                            │                     │
-│                            │ Financial Metrics   │
-│                            │                     │
-└────────────────────────────┴─────────────────────┘
-```
-
-Add your screenshot here:
 
 <p align="center">
-  <img src="assets/screenshots/executive-dashboard.png" alt="MarketSpy Executive Intelligence Dashboard" width="950"/>
+  <img src="assets/executive-dashboard.png" alt="MarketSpy Executive Intelligence Dashboard" width="950"/>
 </p>
 
 ---
@@ -498,35 +456,6 @@ This provides a structured foundation for:
 * Pricing calculations
 * Report generation
 * Future trend analysis
-
----
-
-## 📸 Screenshot Checkpoint #4 — Database
-
-> **Recommended screenshot:** PostgreSQL client showing actual competitor records and extracted metrics.
-
-For example:
-
-```text
-competitors
-──────────────────────────────────
-id | name     | domain
-1  | Netflix  | netflix.com
-2  | Shopify  | shopify.com
-
-
-financial_metrics
-──────────────────────────────────
-competitor | revenue | pricing
-Netflix    | ...     | ...
-Shopify    | ...     | ...
-```
-
-Add your screenshot here:
-
-<p align="center">
-  <img src="assets/screenshots/postgresql-data.png" alt="MarketSpy PostgreSQL Data" width="850"/>
-</p>
 
 ---
 
@@ -576,36 +505,6 @@ The Streamlit dashboard displays the final intelligence report and charts.
 
 ---
 
-## 📸 Screenshot Checkpoint #5 — Complete Pipeline
-
-> **Optional but highly recommended:** Capture a terminal showing the entire execution from competitor input to final report.
-
-```text
-Competitor Input
-      ↓
-Web Crawling
-      ↓
-Gemini Extraction
-      ↓
-Pydantic Validation
-      ↓
-PostgreSQL
-      ↓
-Financial Analyst
-      ↓
-Market Strategist
-      ↓
-Executive Report
-```
-
-Add your screenshot here:
-
-<p align="center">
-  <img src="assets/screenshots/end-to-end-pipeline.png" alt="MarketSpy End-to-End Pipeline" width="850"/>
-</p>
-
----
-
 # 📡 API Layer
 
 The FastAPI backend provides a clean API boundary between the frontend and intelligence engine.
@@ -622,14 +521,11 @@ FastAPI automatically generates interactive API documentation.
 
 ---
 
-## 📸 Screenshot Checkpoint #6 — FastAPI Swagger
+## 📸 Screenshot Checkpoint #4 — FastAPI Swagger
 
-> **Recommended:** Open `http://127.0.0.1:8000/docs` and capture your API endpoints.
-
-Add your screenshot here:
 
 <p align="center">
-  <img src="assets/screenshots/api-docs.png" alt="MarketSpy FastAPI Swagger Documentation" width="900"/>
+  <img src="assets/api-docs.png" alt="MarketSpy FastAPI Swagger Documentation" width="900"/>
 </p>
 
 ---
@@ -784,11 +680,9 @@ Make sure PostgreSQL is running locally.
 # 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/marketspy-ai.git
-cd marketspy-ai
+git clone https://github.com/Aayu4473/MarketSpy-AI.git
+cd MarketSpy-AI
 ```
-
-Replace `yourusername` with your GitHub username.
 
 ---
 
@@ -1227,62 +1121,9 @@ The result is an end-to-end **autonomous competitive intelligence pipeline**.
 
 ---
 
-# 📸 Screenshot Gallery
-
-For a strong GitHub portfolio, the recommended screenshot set is:
-
-| Screenshot           | Filename                   | Priority |
-| -------------------- | -------------------------- | -------- |
-| Main Dashboard       | `dashboard.png`            | ⭐⭐⭐⭐⭐    |
-| Async Reconnaissance | `async-reconnaissance.png` | ⭐⭐⭐⭐     |
-| CrewAI Agents        | `crewai-agents.png`        | ⭐⭐⭐⭐⭐    |
-| Executive Dashboard  | `executive-dashboard.png`  | ⭐⭐⭐⭐⭐    |
-| PostgreSQL Data      | `postgresql-data.png`      | ⭐⭐⭐⭐     |
-| End-to-End Pipeline  | `end-to-end-pipeline.png`  | ⭐⭐⭐      |
-| FastAPI Swagger      | `api-docs.png`             | ⭐⭐⭐⭐     |
-
-### Recruiter-Focused Priority
-
-If you only have time to capture **three screenshots**, use:
-
-```text
-1️⃣ Main Dashboard
-        ↓
-2️⃣ CrewAI Multi-Agent Execution
-        ↓
-3️⃣ Executive Intelligence Dashboard
-```
-
-These three provide the strongest visual proof that MarketSpy AI is a **real, working AI engineering project** rather than simply an LLM demo.
-
----
-
-# 👨‍💻 Author
-
-## Your Name
-
-**B.Tech Computer Science & Engineering**
-
-### Interests
-
-* 🤖 Artificial Intelligence
-* 🧠 Generative AI
-* 🔗 Multi-Agent Systems
-* 🌐 Full-Stack Development
-* 🔐 Cybersecurity
-* ⚙️ AI Automation
-
----
-
 # ⭐ Support
 
 If you find **MarketSpy AI** interesting, consider giving the repository a ⭐ on GitHub.
-
----
-
-# 📄 License
-
-This project is available under the license specified in the repository's `LICENSE` file.
 
 ---
 
