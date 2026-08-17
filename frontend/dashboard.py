@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
-# 1. Premium Theme Configuration
+
 st.set_page_config(
     page_title="MarketSpy AI | Competitive Intelligence Hub",
     page_icon="🦅",
@@ -13,7 +13,7 @@ st.set_page_config(
 # Target configuration pointing directly to your local FastAPI server
 BACKEND_URL = "http://localhost:8000"
 
-# 2. Injecting Custom Clean UI Aesthetics
+
 st.markdown("""
     <style>
     /* Base typography and layout */
@@ -118,7 +118,6 @@ except Exception:
 
 selected_name = st.sidebar.selectbox("Switch Dashboard Focus", options_list)
 
-# --- NEW: DELETE BUTTON LOGIC ---
 if selected_name != "-- Select Monitored Company --":
     target_id = competitor_map[selected_name]
     
